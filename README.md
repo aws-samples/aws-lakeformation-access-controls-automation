@@ -74,7 +74,7 @@ All the cross-account shares from Central Data Lake to the consumption accounts 
 6. The lakeformation-automation SNS topic pushes SQS messages to lakeformation-permissions SQS queue in the appropriate account i.e. Central catalog account or Consumption account
 
 7. The lakeformation-permissions SQS queue triggers the lakeformation_permissions lambda for each incoming message.
-8. The lakeformation-permissions lambda applies the specified permission by invoking the Lake Formation [boto3 api] (https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lakeformation.html#id23) as shown in the below code.
+8. The lakeformation-permissions lambda applies the specified permission by invoking the Lake Formation [boto3 api(https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lakeformation.html#id23) 
 
 ## AWS Service Requirements
 
