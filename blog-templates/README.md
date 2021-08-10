@@ -1,5 +1,16 @@
 # Lakeformation Automation Setup
 
+---
+
+## Contents
+
+* [prerequisites](#prerequisites)
+* [Central Catalog Account setup](#central-catalog-account-setup)
+* [Consumption Account setup](#consumption-account-setup)
+
+
+---
+
 ## prerequisites
 
 You need the following prerequisites before you can proceed with solution:
@@ -22,7 +33,7 @@ You need the following prerequisites before you can proceed with solution:
 
 ## Central Catalog Account setup
 
-1. Download the [central](/central.yaml) yaml file from the repo.
+1. Download the [central](central.yaml) yaml file from the repo.
 
 2. sign-in as Admin into *Central Catalog account*, goto *CloudFormation* -->  *click on 'Create Stack'* --> select *Upload a template file* and upload the file you downloaded from step 1 and click *'Next'*.
     ![Alt](../src/resources/upload_CF_Template.png)
@@ -53,7 +64,7 @@ After Central catalog account deployment is complete you may notice below resour
 
 ## Consumption Account setup
 
-1. Download the [consumption](/consumption.yaml) yaml file from the repo.
+1. Download the [consumption](consumption.yaml) yaml file from the repo.
 
 2. sign-in as Admin to your Consumption Account,goto *CloudFormation* -->  *click on 'Create Stack'* --> select *Upload a template file* and upload the file you downloaded from step 1 and click *'Next'*.
 
