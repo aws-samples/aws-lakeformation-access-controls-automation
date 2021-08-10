@@ -22,15 +22,19 @@ You need the following prerequisites before you can proceed with solution:
 
 2. Create  an AWS account. i.e. Central Catalog Account(ex: AWS account number is 111111111111) Refer [here](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) for instructions.
 
-3. Create AWS Organization in the Central Catalog Account and make the same as the management account. now add a member account i.e Consumption Account(ex: AWS account number is 222222222222). Refer [here](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tutorials_basic.html#tutorial-orgs-step1) for instructions. your org setup for one central catalog account and one consumption account should look like below. 
+3. Create ```AWS Organization``` in the Central Catalog Account and make the same as the management account. now add a member account i.e Consumption Account(ex: AWS account number is 222222222222). Refer [here](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tutorials_basic.html#tutorial-orgs-step1) for instructions. your org setup for one central catalog account and one consumption account should look like below. 
 
     ![Alt](../src/resources/org-setup.png)
 
-4. Click on services and enable trusted access for RAM service. After you have enabled RAM as a trusted service, it should look like below. 
+4. Click on services and enable trusted access for ```RAM``` service. After you have enabled RAM as a trusted service, it should look like below. 
 
     ![Alt](../src/resources/enable-ram.png)
 
+5. go to AWS RAM and click on ```settings``` and ```Enable sharing with AWS Organizations``` like below
 
+    ![Alt](../src/resources/EnableRamAccess.png)
+
+    
 ## Central Catalog Account setup
 
 1. Download the [central](central.yaml) yaml file from the repo.
