@@ -1,0 +1,40 @@
+{
+    "Records":[
+        {
+            "AccessType":"grant",
+            "Principal":"arn:aws:iam::222222222222:user/lf-developer",
+            "Table":{
+                "DatabaseName":"lf_automation",
+                "Name":"nyc_taxi_data"
+            },
+            "Permissions": ["SELECT"],
+            "AccountID":"222222222222"
+        },
+        {
+            "AccessType":"grant",
+            "Principal":"arn:aws:iam::222222222222:user/lf-business-analyst",
+            "TableWithColumns": {
+            "DatabaseName": "lf_automation",
+            "Name": "nyc_taxi_data",
+            "ColumnWildcard": {
+                "ExcludedColumnNames": [
+                    "pulocationid","dolocationid"
+                ]
+            }
+        },
+            "Permissions": ["SELECT"],
+            "AccountID":"222222222222"
+        },
+        {
+            "AccessType":"grant",
+            "Principal":"arn:aws:iam::222222222222:user/lf-taxi-manager",
+            "Table":{
+                "DatabaseName":"lf_automation",
+                "Name":"nyc_taxi_data"
+            },
+            "Permissions": ["SELECT"],
+            "AccountID":"222222222222"
+        }
+    ]
+}
+

@@ -1,0 +1,18 @@
+{
+    "Records":[
+        
+        {
+            "AccessType":"revoke",
+            "Principal":"arn:aws:iam::660938111822:user/lf-business-analyst",
+            "TableWithColumns": {
+            "DatabaseName": "lf_automation",
+            "Name": "nyc_taxi_cab",
+            "ColumnNames":  [
+                    "ratecodeid"
+                ]
+        },
+            "Permissions": ["SELECT"],
+            "AccountID":"660938111822"
+        }
+    ]
+}
