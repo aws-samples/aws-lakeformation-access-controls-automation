@@ -3,7 +3,7 @@
         
         {
             "AccessType":"revoke",
-            "Principal":"arn:aws:iam::660938111822:user/lf-business-analyst",
+            "Principal":"arn:aws:iam::222222222222:user/lf-business-analyst",
             "TableWithColumns": {
             "DatabaseName": "lf_automation",
             "Name": "nyc_taxi_cab",
@@ -12,7 +12,7 @@
                 ]
         },
             "Permissions": ["SELECT"],
-            "AccountID":"660938111822"
+            "AccountID":"222222222222"
         }
     ]
 }
