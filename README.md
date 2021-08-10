@@ -1,6 +1,6 @@
-# Automating access controls in AWS Lake Formation 
+# Automating access controls in AWS Lake Formation
 
-LakeFormation automation framework enables organizations to automate their access controls to their data lakes in both single account and Multi-Account setup. This framework helps decrease manual process involved in Lake Formation permission delegation. This *serverless* framework utilizes Lake Formation API for granting and revoking permissions for a principal on a specific resource(Database, Table, columns). It SNS and SQS to de-couple cross account permissions.   
+LakeFormation automation framework enables organizations to automate their access controls to data lakes in both single account and multi-account setups. This framework helps decrease manual processes involved in Lake Formation permission delegation. This *serverless* framework utilizes the Lake Formation API for granting and revoking permissions for a principal on a specific resource(Database, Table, columns). SNS and SQS are used to decouple cross account permissions.   
 
 ---
 
@@ -22,16 +22,16 @@ LakeFormation automation framework enables organizations to automate their acces
 
 ## Intended audience
 
-This artifact is intended for audience who would like automate their Lake Formation access control setup process via CI/CD without requiring users to log in as Lake Formation admin to provision permissions via console. The scope of the document also covers cross-account Lake Formation Access control automation.
+This artifact is intended for an audience who would like automate their Lake Formation access control setup process via CI/CD, without requiring users to log in as Lake Formation admins to provision permissions via the AWS console. The scope of the document also covers cross-account Lake Formation Access control automation.
 
 ## Introduction
 
-Sharing the resources (database, Table) across accounts with central data lake and consumption account is a 2-step process
+Sharing resources (databases, tables) across accounts with central data lake and consumption account is a 2-step process
 
-1. Share the Database and (or) tables from central data lake account to consumption account
-2. In Consumption Account create a Resource link for DB shared and process to grant permissions on a specific resource to specific Principal
+1. Share the database and (or) tables from central data lake account to a consumption account
+2. In the consumption account create a resource link for shared databases and process to grant permissions on a specific resource to a specific principal
 
-All the cross-account shares from Central Data Lake to the consumption accounts happens via AWS Resource Access Manager (AWS RAM).
+All cross-account shares from the central data lake to the consumption accounts are enabled via AWS Resource Access Manager (AWS RAM).
 
 ![Alt](./src/resources/lf-intro.png)
 
@@ -58,23 +58,23 @@ All the cross-account shares from Central Data Lake to the consumption accounts 
         }]
     }
     ```
-2. when a user drop the manifest file into the manifest bucket(manifests-111111111111) of the Central Catalog Account that triggers the Lake Formation Automation Pipeline.
+2.  The user drops the manifest file into the manifest bucket(manifests-111111111111) of the Central Catalog Account that triggers the Lake Formation Automation Pipeline.
 
-3. The manifest file creates s3 notification event and populates the lf-automation SQS queue
+3. The manifest file creates s3 notification event and populates the `lf-automation` SQS queue
 
-4. lf-automation SQS queue triggers the lakformation_automation lambda for each incoming file, and divides the file with multiple permission blocks in to separate permission requests.  
+4. lf-automation SQS queue triggers the `lakeformation_automation` lambda for each incoming file, and divides the file with multiple permission blocks into separate permission requests.  
 
     lf-automation lambda generates account level requests i.e.
 
     - Database level permission request for Central catalog account that provides Cross account Lake Formation Database share to consumption account
     -  Granular level (Table, Column) permission request for Consumption account that provides data access to the consumption personas
 
-5. Each permission request is published to SNS topic lakeformation-automation as separate message
+5. Each permission request is published to the SNS topic `lakeformation-automation` as separate message
 
-6. The lakeformation-automation SNS topic pushes SQS messages to lakeformation-permissions SQS queue in the appropriate account i.e. Central catalog account or Consumption account
+6. The lakeformation-automation SNS topic pushes SQS messages to the `lakeformation-permissions` SQS queue in the appropriate account i.e. Central Catalog account or Consumption account
 
-7. The lakeformation-permissions SQS queue triggers the lakeformation_permissions lambda for each incoming message.
-8. The lakeformation-permissions lambda applies the specified permission by invoking the Lake Formation [boto3 api](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lakeformation.html#id23) 
+7. The  `lakeformation-permissions` SQS queue triggers the `lakeformation_permissions` lambda for each incoming message.
+8. The `lakeformation-permissions` lambda applies the specified permission by invoking the Lake Formation [boto3 api](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lakeformation.html#id23)
 
 ## AWS Service Requirements
 
@@ -101,14 +101,14 @@ This utility uses below AWS Services:
 
 ## Prerequisites
 
--   Make sure the AWS organizations setup is complete before you start the deployment. Instructions for this are mentiond in both [*automated-deployment*](./automated-deployment/README.md) and [*blog-templates*](./blog-templates/README.md) README's 
+-   Make sure the AWS organizations setup is complete before you start the deployment. Instructions for this are mentiond in both [*automated-deployment*](./automated-deployment/README.md) and [*blog-templates*](./blog-templates/README.md) README's
 
 ## Deployment
 
 You can deploy this framework in an automated way or manually by cloning this repo and uploading cfn templates to cloud formation service, also make sure you follow your organizations security and devops best practices before deploying this solution to production environments.
 
-* Follow [README.md](./automated-deployment/README.md) to deploy this utility in your AWS accounts via shell scripts.
-* for manual cloud formation template follow instruction [here](./blog-templates/README.md)
+* CLI deployment: [here](./automated-deployment/README.md)
+* Console deployment: [here](./blog-templates/README.md)
 
 ## Authors
 
@@ -116,7 +116,7 @@ The following people are involved in the design, architecture, development, and 
 1. **Praveen Kanumarlapudi**, Data Architect, Amazon Web Services Inc.
 2. **Naveen JD**, Sr. Data Architect, Amazon Web Services Inc.
 3. **Dwight Townsend**, DevOps Consultant, Amazon Web Services Inc.
-4. **Lucas Hanson**, Cloud Infra Architect, Amazon Web Services Inc.
+4. **Lucas Hanson**, Cloud Infrastructure Architect, Amazon Web Services Inc.
 
 ## Security
 
@@ -125,5 +125,3 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
-
