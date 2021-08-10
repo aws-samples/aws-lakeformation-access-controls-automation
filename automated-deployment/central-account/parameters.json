@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterKey": "LFTableName",
+        "ParameterValue": "nyc_taxi_data"
+    },
+    {
+        "ParameterKey": "OrgId",
+        "ParameterValue": "o-xxxxxxxxxx"
+    },
+    {
+        "ParameterKey": "LFAdmin",
+        "ParameterValue": "Admin"
+    },
+    {
+        "ParameterKey": "TestUserPassword",
+        "ParameterValue": "Replaceme1!"
+    }
+]

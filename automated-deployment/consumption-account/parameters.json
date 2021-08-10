@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterKey": "TopicArn",
+        "ParameterValue": "arn:aws:sns:us-west-2:XXXXXXXXXXXX:lakeformation-automation"
+    },
+    {
+        "ParameterKey": "CentralAccount",
+        "ParameterValue": "XXXXXXXXXXXX"
+    },
+    {
+        "ParameterKey": "LFAdmin",
+        "ParameterValue": "Admin"
+    },
+    {
+        "ParameterKey": "TestUserPassword",
+        "ParameterValue": "Replaceme1!"
+    }
+]
